@@ -1,0 +1,169 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Google Fonts */
+@import url(
+  "https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+);
+
+/*  DaisyUI Custom Themes */
+@plugin "daisyui" {
+  themes: {
+    /* 🌤️ Light Theme */
+    homenest-light: {
+      primary: "#2D5A9D",
+      "primary-focus": "#274C84",
+      "primary-content": "#ffffff",
+
+      secondary: "#F5A623",
+      "secondary-focus": "#e08f18",
+      "secondary-content": "#1C1C1C",
+
+      accent: "#3B9B6D",
+      "accent-focus": "#33885a",
+      "accent-content": "#ffffff",
+
+      neutral: "#F9FAFB",
+      "neutral-focus": "#F3F6F8",
+      "neutral-content": "#1C1C1C",
+
+      "base-100": "#ffffff",
+      "base-200": "#F9FAFB",
+      "base-300": "#F4F6F8",
+      "base-content": "#1C1C1C",
+
+      info: "#4A90E2",
+      success: "#3B9B6D",
+      warning: "#F5A623",
+      error: "#E05A5A",
+
+      "--rounded-box": "16px",
+      "--rounded-btn": "10px",
+      "--btn-text-case": "none",
+      "--animation-btn": "0.25s",
+      "--animation-input": "0.2s",
+    },
+
+    /* 🌙 Dark Theme */
+    homenest-dark: {
+      primary: "#4A90E2",
+      "primary-focus": "#3f7fd0",
+      "primary-content": "#121212",
+
+      secondary: "#F5A623",
+      "secondary-focus": "#e08f18",
+      "secondary-content": "#121212",
+
+      accent: "#3B9B6D",
+      "accent-focus": "#2e7b57",
+      "accent-content": "#121212",
+
+      neutral: "#121212",
+      "neutral-focus": "#0f0f0f",
+      "neutral-content": "#EAEAEA",
+
+      "base-100": "#1E1E1E",
+      "base-200": "#151515",
+      "base-300": "#0F0F0F",
+      "base-content": "#EAEAEA",
+
+      info: "#6FA8FF",
+      success: "#55b57a",
+      warning: "#F5A623",
+      error: "#FF7A7A",
+
+      "--rounded-box": "16px",
+      "--rounded-btn": "10px",
+      "--btn-text-case": "none",
+      "--animation-btn": "0.25s",
+      "--animation-input": "0.2s",
+    },
+  },
+}
+
+/* Typography & Base Styles */
+
+html {
+  font-family: "Poppins", "Inter", system-ui, sans-serif;
+  color-scheme: light dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings use Nunito */
+.hn-heading {
+  font-family: "Nunito", "Poppins", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Default typography */
+h1 {
+  @apply text-4xl sm:text-5xl font-bold hn-heading;
+}
+h2 {
+  @apply text-2xl sm:text-3xl font-semibold hn-heading;
+}
+h3 {
+  @apply text-lg sm:text-xl font-semibold hn-heading;
+}
+p {
+  @apply text-base sm:text-lg leading-relaxed;
+}
+
+/* Layout & Responsiveness */
+
+.container {
+  @apply mx-auto max-w-6xl px-4 sm:px-6 md:px-8;
+}
+
+/* Navbar adjustments */
+.navbar {
+  @apply flex flex-col sm:flex-row items-center sm:justify-between
+    gap-3 sm:gap-6 py-4 px-4 sm:px-8;
+}
+
+/* Card styling */
+.card.hn-card {
+  @apply rounded-xl shadow-md bg-base-100 p-4 sm:p-6 md:p-8;
+}
+
+/* Buttons */
+.btn {
+  @apply font-semibold text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3;
+}
+
+/* Responsive Utilities */
+
+/* For tablets and smaller screens */
+@media (max-width: 1024px) {
+  h1 {
+    @apply text-3xl;
+  }
+
+  .navbar {
+    @apply flex-col gap-2;
+  }
+
+  .container {
+    @apply max-w-4xl;
+  }
+}
+
+/* For mobile phones */
+@media (max-width: 640px) {
+  h1 {
+    @apply text-2xl;
+  }
+
+  .btn {
+    @apply w-full;
+  }
+
+  .container {
+    @apply max-w-full px-4;
+  }
+
+  .navbar {
+    @apply flex-col items-start;
+  }
+}
