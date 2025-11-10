@@ -9,6 +9,13 @@ const Register = () => {
   const { loading, setUser, googleSignIn } = use(AuthContext);
   const axiosInstance = useAxios();
 
+  if (loading)
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
+
   const handleLogin = (e) => {
     e.preventDefault();
   };

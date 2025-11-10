@@ -2,16 +2,19 @@ import React, { use, useState } from "react";
 import { useTheme } from "../CustomHooks/useTheme";
 import { AuthContext } from "../Contexts/AuthContext";
 import { Link, NavLink } from "react-router";
+import { FaUser } from "react-icons/fa";
+import { IoLogOut } from "react-icons/io5";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "acid");
   useTheme(theme);
-  const { user } = use(AuthContext);
+  const { user, signOutUser } = use(AuthContext);
 
   const links = (
     <>
       <li>
-        <NavLink>Home</NavLink>
+        <NavLink to={`/`}>Home</NavLink>
       </li>
       <li>
         <NavLink>All Properties</NavLink>
@@ -28,8 +31,20 @@ const Navbar = () => {
     </>
   );
 
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        Swal.fire({
+          title: "Log Out Successfull!",
+          icon: "success",
+          timer: 2000,
+        });
+      })
+      .catch((err) => console.log(err.message));
+  };
+
   return (
-    <div className="container mx-auto px-4 sm:px-6 md:px-8">
+    <div className="px-4 sm:px-6 md:px-8">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -68,19 +83,40 @@ const Navbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost rounded-field"
+                className="btn btn-ghost btn-circle avatar"
               >
-                Dropdown
+                <div className="w-9 border-2 border-gray-300 rounded-full">
+                  <img src={user.photoURL || <FaUser />} alt="" />
+                </div>
               </div>
               <ul
                 tabIndex="-1"
-                className="menu dropdown-content bg-base-200 rounded-box z-1 mt-4 w-52 p-2 shadow-sm"
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 w-52 p-2 shadow"
               >
+                <div className=" pb-3 border-b border-b-gray-200">
+                  <li className="text-sm font-bold">{user.displayName}</li>
+                  <li className="text-xs">{user.email}</li>
+                </div>
+                <label className="my-2 flex items-center gap-2 cursor-pointer text-base-content">
+                  <span className="text-sm">
+                    {theme === "acid" ? "🌙 Dark" : "☀️ Light"}
+                  </span>
+                  <input
+                    type="checkbox"
+                    className="toggle toggle-primary"
+                    onChange={(e) =>
+                      setTheme(e.target.checked ? "dim" : "acid")
+                    }
+                    checked={theme === "dim"}
+                  />
+                </label>
                 <li>
-                  <a>Item 1</a>
-                </li>
-                <li>
-                  <a>Item 2</a>
+                  <button
+                    onClick={handleSignOut}
+                    className="btn btn-primary text-base-100 text-lg"
+                  >
+                    Log Out <IoLogOut />
+                  </button>
                 </li>
               </ul>
             </div>
@@ -94,17 +130,6 @@ const Navbar = () => {
               </Link>
             </>
           )}
-          <label className="flex items-center gap-2 cursor-pointer text-base-content">
-            <span className="text-sm">
-              {theme === "acid" ? "🌙 Dark" : "☀️ Light"}
-            </span>
-            <input
-              type="checkbox"
-              className="toggle toggle-primary"
-              onChange={(e) => setTheme(e.target.checked ? "dim" : "acid")}
-              checked={theme === "dim"}
-            />
-          </label>
         </div>
       </div>
     </div>
