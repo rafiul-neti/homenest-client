@@ -8,8 +8,8 @@
   name: "acid";
   default: true;
 
-  --color-primary: #2563eb; /* Deep Blue */
-  --color-secondary: #3B82F6; /* Warm Amber */
+  --color-primary: #ff4b2b; /* Deep Blue */
+  --color-secondary: #fc4f4f; /* Warm Amber */
   --color-accent: #10b981; /* Soft Emerald */
   --color-neutral: #f3f4f6; /* Light Gray Background */
   --color-base-100: #ffffff; /* White surface */
@@ -33,6 +33,10 @@
 
 @plugin "daisyui/theme" {
   name: "dim";
+
+  /* --color-primary: #2563eb; 
+  --color-base-content: #fff;
+  --color-text: #1f2937; */
 }
 
 /* ✅ Custom font classes */
