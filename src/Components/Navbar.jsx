@@ -1,9 +1,36 @@
-import React from "react";
+import React, { use, useState } from "react";
+import { useTheme } from "../CustomHooks/useTheme";
+import { AuthContext } from "../Contexts/AuthContext";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "acid");
+  useTheme(theme);
+  const { user } = use(AuthContext);
+
+  const links = (
+    <>
+      <li>
+        <NavLink>Home</NavLink>
+      </li>
+      <li>
+        <NavLink>All Properties</NavLink>
+      </li>
+      <li>
+        <NavLink>Add Properties</NavLink>
+      </li>
+      <li>
+        <NavLink>My Properties</NavLink>
+      </li>
+      <li>
+        <NavLink>My Ratings</NavLink>
+      </li>
+    </>
+  );
+
   return (
-    <div className="container">
-      <nav className="navbar bg-base-100 shadow-sm">
+    <div className="container mx-auto px-4 sm:px-6 md:px-8">
+      <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -27,54 +54,59 @@ const Navbar = () => {
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+              {links}
             </ul>
           </div>
           <a className="btn btn-ghost text-xl">daisyUI</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
+          <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end flex items-center gap-2">
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost rounded-field"
+              >
+                Dropdown
+              </div>
+              <ul
+                tabIndex="-1"
+                className="menu dropdown-content bg-base-200 rounded-box z-1 mt-4 w-52 p-2 shadow-sm"
+              >
+                <li>
+                  <a>Item 1</a>
+                </li>
+                <li>
+                  <a>Item 2</a>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <>
+              <Link to={`/login`} className="btn btn-primary text-base-100">
+                Login
+              </Link>
+              <Link to={`/register`} className="btn btn-primary text-base-100">
+                Sign Up
+              </Link>
+            </>
+          )}
+          <label className="flex items-center gap-2 cursor-pointer text-base-content">
+            <span className="text-sm">
+              {theme === "acid" ? "🌙 Dark" : "☀️ Light"}
+            </span>
+            <input
+              type="checkbox"
+              className="toggle toggle-primary"
+              onChange={(e) => setTheme(e.target.checked ? "dim" : "acid")}
+              checked={theme === "dim"}
+            />
+          </label>
         </div>
-      </nav>
+      </div>
     </div>
   );
 };

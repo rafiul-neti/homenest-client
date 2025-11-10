@@ -1,169 +1,102 @@
+/* Google Fonts for HomeNest */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap");
+
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* Google Fonts */
-@import url(
-  "https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
-);
+@plugin "daisyui/theme" {
+  name: "acid";
+  default: true;
 
-/*  DaisyUI Custom Themes */
-@plugin "daisyui" {
-  themes: {
-    /* 🌤️ Light Theme */
-    homenest-light: {
-      primary: "#2D5A9D",
-      "primary-focus": "#274C84",
-      "primary-content": "#ffffff",
+  --color-primary: #2563eb; /* Deep Blue */
+  --color-secondary: #3B82F6; /* Warm Amber */
+  --color-accent: #10b981; /* Soft Emerald */
+  --color-neutral: #f3f4f6; /* Light Gray Background */
+  --color-base-100: #ffffff; /* White surface */
+  --color-base-200: #f9fafb; /* Slightly off-white section */
+  --color-base-300: #e5e7eb; /* Border color */
+  --color-info: #3b82f6; /* Info Blue */
+  --color-success: #16a34a; /* Success Green */
+  --color-warning: #facc15; /* Warning Yellow */
+  --color-error: #dc2626; /* Error Red */
 
-      secondary: "#F5A623",
-      "secondary-focus": "#e08f18",
-      "secondary-content": "#1C1C1C",
-
-      accent: "#3B9B6D",
-      "accent-focus": "#33885a",
-      "accent-content": "#ffffff",
-
-      neutral: "#F9FAFB",
-      "neutral-focus": "#F3F6F8",
-      "neutral-content": "#1C1C1C",
-
-      "base-100": "#ffffff",
-      "base-200": "#F9FAFB",
-      "base-300": "#F4F6F8",
-      "base-content": "#1C1C1C",
-
-      info: "#4A90E2",
-      success: "#3B9B6D",
-      warning: "#F5A623",
-      error: "#E05A5A",
-
-      "--rounded-box": "16px",
-      "--rounded-btn": "10px",
-      "--btn-text-case": "none",
-      "--animation-btn": "0.25s",
-      "--animation-input": "0.2s",
-    },
-
-    /* 🌙 Dark Theme */
-    homenest-dark: {
-      primary: "#4A90E2",
-      "primary-focus": "#3f7fd0",
-      "primary-content": "#121212",
-
-      secondary: "#F5A623",
-      "secondary-focus": "#e08f18",
-      "secondary-content": "#121212",
-
-      accent: "#3B9B6D",
-      "accent-focus": "#2e7b57",
-      "accent-content": "#121212",
-
-      neutral: "#121212",
-      "neutral-focus": "#0f0f0f",
-      "neutral-content": "#EAEAEA",
-
-      "base-100": "#1E1E1E",
-      "base-200": "#151515",
-      "base-300": "#0F0F0F",
-      "base-content": "#EAEAEA",
-
-      info: "#6FA8FF",
-      success: "#55b57a",
-      warning: "#F5A623",
-      error: "#FF7A7A",
-
-      "--rounded-box": "16px",
-      "--rounded-btn": "10px",
-      "--btn-text-case": "none",
-      "--animation-btn": "0.25s",
-      "--animation-input": "0.2s",
-    },
-  },
+  /* Text and Typography */
+  --color-text: #1f2937; /* Gray-800 for readable text */
+  --rounded-box: 1rem; /* Rounded corners for cards */
+  --rounded-btn: 0.75rem; /* Rounded corners for buttons */
+  --rounded-badge: 1rem; /* Rounded badges */
+  --animation-btn: 0.25s; /* Button hover transition */
+  --animation-input: 0.2s; /* Input focus transition */
+  --border-btn: 1px; /* Button border width */
+  --tab-radius: 0.75rem; /* Tabs rounded corners */
 }
 
-/* Typography & Base Styles */
-
-html {
-  font-family: "Poppins", "Inter", system-ui, sans-serif;
-  color-scheme: light dark;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@plugin "daisyui/theme" {
+  name: "dim";
 }
 
-/* Headings use Nunito */
-.hn-heading {
-  font-family: "Nunito", "Poppins", sans-serif;
-  letter-spacing: -0.01em;
+/* ✅ Custom font classes */
+.font-poppins {
+  font-family: "Poppins", sans-serif;
 }
 
-/* Default typography */
-h1 {
-  @apply text-4xl sm:text-5xl font-bold hn-heading;
-}
-h2 {
-  @apply text-2xl sm:text-3xl font-semibold hn-heading;
-}
-h3 {
-  @apply text-lg sm:text-xl font-semibold hn-heading;
-}
-p {
-  @apply text-base sm:text-lg leading-relaxed;
+.font-nunito {
+  font-family: "Nunito", sans-serif;
 }
 
-/* Layout & Responsiveness */
-
-.container {
-  @apply mx-auto max-w-6xl px-4 sm:px-6 md:px-8;
+/* H1 - Main Title */
+.text-h1 {
+  @apply text-2xl sm:text-3xl lg:text-4xl font-bold;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Navbar adjustments */
-.navbar {
-  @apply flex flex-col sm:flex-row items-center sm:justify-between
-    gap-3 sm:gap-6 py-4 px-4 sm:px-8;
+/* H2 - Section Title */
+.text-h2 {
+  @apply text-xl sm:text-2xl lg:text-3xl font-semibold;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Card styling */
-.card.hn-card {
-  @apply rounded-xl shadow-md bg-base-100 p-4 sm:p-6 md:p-8;
+/* H3 - Subsection / Card Title */
+.text-h3 {
+  @apply text-lg sm:text-xl lg:text-2xl font-semibold;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Buttons */
-.btn {
-  @apply font-semibold text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3;
+/* Subtitle / Card Minor Title */
+.text-subtitle {
+  @apply text-base sm:text-lg lg:text-xl font-medium text-primary;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Responsive Utilities */
-
-/* For tablets and smaller screens */
-@media (max-width: 1024px) {
-  h1 {
-    @apply text-3xl;
-  }
-
-  .navbar {
-    @apply flex-col gap-2;
-  }
-
-  .container {
-    @apply max-w-4xl;
-  }
+/* Small Subtitle / Badge Title */
+.text-sub-badge {
+  @apply text-sm sm:text-base lg:text-base font-medium text-secondary;
+  font-family: "Poppins", sans-serif;
 }
 
-/* For mobile phones */
-@media (max-width: 640px) {
-  h1 {
-    @apply text-2xl;
-  }
+/* ===============================
+   📝 BODY / PARAGRAPH TEXT
+================================= */
 
-  .btn {
-    @apply w-full;
-  }
-
-  .container {
-    @apply max-w-full px-4;
-  }
-
-  .navbar {
-    @apply flex-col items-start;
-  }
+/* Standard paragraph */
+.text-body {
+  @apply text-sm sm:text-base lg:text-lg  leading-relaxed;
+  font-family: "Nunito", sans-serif;
 }
+
+/* Small notes / captions */
+.text-caption {
+  @apply text-xs sm:text-sm lg:text-sm;
+  font-family: "Nunito", sans-serif;
+}
+
+/* ===============================
+   🧩 EXAMPLES
+================================= */
+/* 
+<h1 className="text-h1 text-primary">Main Title</h1>
+<h2 className="text-h2 text-secondary">Section Title</h2>
+<h3 className="text-h3">Subsection Title</h3>
+<p className="text-body">This is a standard paragraph text.</p>
+<span className="text-caption">Small caption / note</span>
+*/
