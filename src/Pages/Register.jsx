@@ -1,12 +1,22 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { FiUserPlus } from "react-icons/fi";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
 import useAxios from "../CustomHooks/useAxios";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const { loading, setUser, googleSignIn } = use(AuthContext);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const {
+    loading,
+    setUser,
+    googleSignIn,
+    setLoading,
+    createUser,
+    updateUserInfo,
+  } = use(AuthContext);
   const axiosInstance = useAxios();
 
   if (loading)
@@ -16,9 +26,54 @@ const Register = () => {
       </div>
     );
 
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const image = e.target.image.value;
+    const password = e.target.password.value;
+
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      setError("Please Provide a Valid Password!");
+      return;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        setUser(result.user);
+
+        updateUserInfo({
+          displayName: name,
+          photoURL: image,
+        })
+          .then()
+          .catch((err) => console.log(err.message));
+
+        const userInfo = {
+          name,
+          image,
+          email,
+        };
+
+        axiosInstance.post("/user", userInfo).then((data) => {
+          if (data.data.insertedId) {
+            Swal.fire({
+              title: "Congrats! You've Successfully Registered!",
+              icon: "success",
+              timer: 2000,
+            });
+          }
+        });
+        navigate("/");
+        setError("");
+        e.target.reset();
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
+
   const handleGoogleLogin = () => {
     googleSignIn()
       .then((result) => {
@@ -33,8 +88,16 @@ const Register = () => {
         };
 
         axiosInstance.post("/user", userInfo).then((data) => {
-          console.log(data.data);
+          if (data.data.insertedId) {
+            Swal.fire({
+              title: "Congrats! You've Successfully Registered!",
+              icon: "success",
+              timer: 2000,
+            });
+          }
         });
+
+        setLoading(false);
       })
       .catch((err) => console.log(err.message));
   };
@@ -42,8 +105,10 @@ const Register = () => {
     <section className="bg-neutral min-h-screen flex flex-col items-center justify-center">
       <div className="container mx-auto perspective-distant flex flex-row-reverse">
         <div className="flex-1 bg-white p-5 rounded-tr-xl rounded-br-xl">
-          <h2 className="my-8 text-center text-h1">Please Register</h2>
-          <form onSubmit={handleLogin} className="text-center space-y-6">
+          <h2 className={`my-8 text-center text-h1 ${error && "text-red-600"}`}>
+            {error ? error : "Please Register"}
+          </h2>
+          <form onSubmit={handleRegister} className="text-center space-y-6">
             <input
               type="text"
               name="name"

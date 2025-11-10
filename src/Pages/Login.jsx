@@ -1,11 +1,66 @@
-import React from "react";
+import React, { use } from "react";
 import { FaCircleArrowRight } from "react-icons/fa6";
 import { FiUserPlus } from "react-icons/fi";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../Contexts/AuthContext";
+import useAxios from "../CustomHooks/useAxios";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { googleSignIn, signInUser, setLoading, setUser } = use(AuthContext);
+  const axiosInstance = useAxios();
   const handleLogin = (e) => {
     e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signInUser(email, password)
+      .then((result) => {
+        setUser(result.user);
+
+        Swal.fire({
+          title: "Login Successfull!",
+          icon: "success",
+          timer: 2000,
+        });
+
+        setLoading(false);
+
+        navigate(location.state || "/");
+
+        e.target.reset();
+      })
+      .catch((err) => console.log(err.message));
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+
+        setUser(user);
+
+        const userInfo = {
+          name: user.displayName,
+          image: user.photoURL,
+          email: user.email,
+        };
+
+        axiosInstance.post("/user", userInfo).then((data) => {
+          if (data.data.insertedId) {
+            Swal.fire({
+              title: "Congrats! You've Successfully Registered!",
+              icon: "success",
+              timer: 2000,
+            });
+          }
+        });
+        setLoading(false);
+        navigate(location.state || "/");
+      })
+      .catch((err) => console.log(err.message));
   };
 
   return (
@@ -42,7 +97,10 @@ const Login = () => {
             <span className="text-sm">Or Login With</span>
             <div className="inline-block w-[35%] h-px bg-base-300"></div>
           </div>
-          <button className="btn btn-block bg-white text-black border-[#e5e5e5]">
+          <button
+            onClick={handleGoogleSignIn}
+            className="btn btn-block bg-white text-black border-[#e5e5e5]"
+          >
             <svg
               aria-label="Google logo"
               width="16"
