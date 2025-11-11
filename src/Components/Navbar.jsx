@@ -107,9 +107,9 @@ const Navbar = () => {
                     type="checkbox"
                     className="toggle toggle-primary"
                     onChange={(e) =>
-                      setTheme(e.target.checked ? "dim" : "acid")
+                      setTheme(e.target.checked ? "dark" : "acid")
                     }
-                    checked={theme === "dim"}
+                    checked={theme === "dark"}
                   />
                 </label>
                 <li>

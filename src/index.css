@@ -32,11 +32,12 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "dim";
+  name: "dark";
 
   /* --color-primary: #2563eb; 
   --color-base-content: #fff;
-  --color-text: #1f2937; */
+   */
+   --color-text: #ffffff;
 }
 
 /* ✅ Custom font classes */
@@ -94,13 +95,6 @@
   font-family: "Nunito", sans-serif;
 }
 
-/* ===============================
-   🧩 EXAMPLES
-================================= */
-/* 
-<h1 className="text-h1 text-primary">Main Title</h1>
-<h2 className="text-h2 text-secondary">Section Title</h2>
-<h3 className="text-h3">Subsection Title</h3>
-<p className="text-body">This is a standard paragraph text.</p>
-<span className="text-caption">Small caption / note</span>
-*/
+.why-choose {
+  background-image: url("https://images.unsplash.com/photo-1708764014093-d3578e77a143?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870");
+}
