@@ -23,12 +23,12 @@
   /* Text and Typography */
   --color-text: #1f2937; /* Gray-800 for readable text */
   --rounded-box: 1rem; /* Rounded corners for cards */
-  --rounded-btn: 0.75rem; /* Rounded corners for buttons */
+  --rounded-btn: 0.1rem; /* Rounded corners for buttons */
   --rounded-badge: 1rem; /* Rounded badges */
   --animation-btn: 0.25s; /* Button hover transition */
   --animation-input: 0.2s; /* Input focus transition */
   --border-btn: 1px; /* Button border width */
-  --tab-radius: 0.75rem; /* Tabs rounded corners */
+  --tab-radius: 0.25rem; /* Tabs rounded corners */
 }
 
 @plugin "daisyui/theme" {
@@ -68,7 +68,7 @@
 
 /* Subtitle / Card Minor Title */
 .text-subtitle {
-  @apply text-base sm:text-lg lg:text-xl font-medium text-primary;
+  @apply text-base sm:text-lg lg:text-xl font-medium;
   font-family: "Poppins", sans-serif;
 }
 

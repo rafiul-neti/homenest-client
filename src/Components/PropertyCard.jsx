@@ -1,38 +1,48 @@
 import React from "react";
+import { IoLocationOutline } from "react-icons/io5";
 import { Link } from "react-router";
 
 const PropertyCard = ({ property }) => {
   console.log(property);
   return (
-    <div className="p-1 bg-base-100 shadow-lg">
-      <div className="w-[315px]">
+    <div className="bg-base-100 shadow-lg rounded-md">
+      <div className="">
         <img
-          src={property["property-image"]}
-          className="object-contain overflow-hidden"
+          src={property.thumbnail}
+          className="object-contain overflow-hidden rounded-tl-md rounded-tr-md"
           alt=""
         />
       </div>
-      <div className="">
-        <div className="bg-neutral flex">
-          <p className="w-1/3 bg-secondary font-semibold text-base-100 p-3 text-center capitalize">
-            {property.category}
+      <div className="p-3">
+        <div className="">
+          <h3 className="my-5 text-subtitle text-center text-gray-700">
+            {property["property-name"]}
+          </h3>
+          <p className="flex gap-5 items-center">
+            <IoLocationOutline />{" "}
+            <span className="text-sm text-body text-gray-500">
+              {property.location}
+            </span>{" "}
           </p>
-          <p className="w-2/3 text-center font-semibold p-3 hover:bg-success hover:text-base-100 duration-300 ease-in-out">
-            {property.price}
+          <div className="w-full h-px my-2 bg-gray-400"></div>
+          <p className="text-body text-base text-gray-600">
+            {property["about-property"]}
           </p>
+          <div className="w-full h-px my-2 bg-gray-400"></div>
         </div>
-        <div className="text-center">
-          <h2>{property.location}</h2>
-          <h3>{property["property-name"]}</h3>
-          <p className="text-justify text-gray-700">{property["about-property"]}</p>
+        <div className="flex justify-between items-center">
+          <div className="">
+            <p className="capitalize text-sm text-gray-500">{property.category}</p>
+            <h3 className="text-h3 text-gray-700">{property.price}</h3>
+          </div>
+
+          <div className="">
+            <Link className="btn btn-outline text-gray-500 outline-gray-400 hover:bg-secondary hover:text-base-100 ease-in-out duration-500">
+              View Property
+            </Link>
+          </div>
         </div>
       </div>
-      <Link
-        to={`/property/${property._id}`}
-        className="mt-3 btn btn-primary text-lg text-base-100 btn-block"
-      >
-        View Details
-      </Link>
     </div>
   );
 };

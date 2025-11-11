@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <section className="container mx-auto bg-neutral">
       <h1 className="my-5 text-h1 text-center">
-        Recently <span className="text-primary">Added Properties</span>
+        Recently <span className="text-primary">Listed Properties</span>
       </h1>
       <div className="p-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {properties.map((property) => (
