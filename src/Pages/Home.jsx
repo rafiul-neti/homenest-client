@@ -4,6 +4,7 @@ import PropertyCard from "../Components/PropertyCard";
 import WhyChooseUs from "../Components/WhyChooseUs";
 import MeetOurAgents from "../Components/MeetOurAgents";
 import CalculateCost from "../Components/CalculateCost";
+import BuySellRent from "../Components/BuySellRent";
 
 const Home = () => {
   const axiosInstance = useAxios();
@@ -16,11 +17,11 @@ const Home = () => {
 
   return (
     <>
-      <section>
-        
+      <section className="container mx-auto p-2 md:p-0">
+        <BuySellRent />
       </section>
 
-      <section className="container mx-auto bg-neutral">
+      <section className="mt-18 container mx-auto bg-neutral pt-7">
         <h1 className="my-5 text-h1 text-center">
           Recently <span className="text-primary">Listed Properties</span>
         </h1>

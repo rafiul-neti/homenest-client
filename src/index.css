@@ -102,3 +102,19 @@
 .ag-icons {
   @apply hover:text-secondary ease-out duration-500;
 }
+
+.bsr-cards {
+  @apply p-10 rounded-md hover:shadow-lg
+}
+
+.bsr-images {
+  @apply p-9;
+}
+
+.bsr-cardsBody {
+  @apply mt-6 space-y-6 text-center;
+}
+
+.bsr-btns {
+  @apply btn btn-outline outline-2 outline-primary rounded-md! text-primary border-0 text-lg hover:bg-primary hover:text-base-100 hover:outline-0 ease-out duration-500;
+}
