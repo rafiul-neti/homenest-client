@@ -3,7 +3,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { Link } from "react-router";
 
 const PropertyCard = ({ property }) => {
-  console.log(property);
+  
   return (
     <div className="bg-base-100 shadow-lg rounded-md">
       <div className="">
@@ -37,7 +37,7 @@ const PropertyCard = ({ property }) => {
           </div>
 
           <div className="">
-            <Link className="btn btn-outline text-gray-500 outline-gray-400 hover:bg-secondary hover:text-base-100 ease-in-out duration-500">
+            <Link to={`/property/${property._id}`} className="btn btn-outline text-gray-500 outline-gray-400 hover:bg-secondary hover:text-base-100 ease-in-out duration-500">
               View Property
             </Link>
           </div>

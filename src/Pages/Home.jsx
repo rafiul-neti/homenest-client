@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import useAxios from "../CustomHooks/useAxios";
 import PropertyCard from "../Components/PropertyCard";
 import WhyChooseUs from "../Components/WhyChooseUs";
+import MeetOurAgents from "../Components/MeetOurAgents";
 
 const Home = () => {
   const axiosInstance = useAxios();
   const [properties, setProperties] = useState([]);
   useEffect(() => {
     axiosInstance.get("/latest-properties").then((data) => {
-      console.log(data.data);
       setProperties(data.data);
     });
   }, [axiosInstance]);
@@ -28,6 +28,10 @@ const Home = () => {
 
       <section className="my-18 p-3 lg:p-10 why-choose text-base-200">
         <WhyChooseUs />
+      </section>
+
+      <section className="mb-18 w-11/12 lg:w-[96%] mx-auto">
+        <MeetOurAgents />
       </section>
     </>
   );
