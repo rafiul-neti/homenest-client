@@ -3,6 +3,7 @@ import useAxios from "../CustomHooks/useAxios";
 import PropertyCard from "../Components/PropertyCard";
 import WhyChooseUs from "../Components/WhyChooseUs";
 import MeetOurAgents from "../Components/MeetOurAgents";
+import CalculateCost from "../Components/CalculateCost";
 
 const Home = () => {
   const axiosInstance = useAxios();
@@ -15,6 +16,10 @@ const Home = () => {
 
   return (
     <>
+      <section>
+        
+      </section>
+
       <section className="container mx-auto bg-neutral">
         <h1 className="my-5 text-h1 text-center">
           Recently <span className="text-primary">Listed Properties</span>
@@ -30,8 +35,12 @@ const Home = () => {
         <WhyChooseUs />
       </section>
 
-      <section className="mb-18 w-11/12 lg:w-[96%] mx-auto">
+      <section className="w-11/12 lg:w-[96%] mx-auto">
         <MeetOurAgents />
+      </section>
+
+      <section className="my-18 container mx-auto p-2 md:p-0">
+        <CalculateCost />
       </section>
     </>
   );

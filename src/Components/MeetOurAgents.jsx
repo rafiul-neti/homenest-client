@@ -21,7 +21,7 @@ const MeetOurAgents = () => {
         finding your perfect property.
       </p>
 
-      <div className="p-3 bg-neutral grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7">
+      <div className="p-3 bg-neutral grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7">
         {agents.map((agent) => (
           <AgentCard key={agent._id} agent={agent} />
         ))}
