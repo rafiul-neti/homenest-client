@@ -5,6 +5,7 @@ import WhyChooseUs from "../Components/WhyChooseUs";
 import MeetOurAgents from "../Components/MeetOurAgents";
 import CalculateCost from "../Components/CalculateCost";
 import BuySellRent from "../Components/BuySellRent";
+import BannerSlider from "../Components/BannerSlider";
 
 const Home = () => {
   const axiosInstance = useAxios();
@@ -17,6 +18,10 @@ const Home = () => {
 
   return (
     <>
+      <section className="mt-3 mb-18">
+        <BannerSlider />
+      </section>
+
       <section className="container mx-auto p-2 md:p-0">
         <BuySellRent />
       </section>
@@ -25,7 +30,7 @@ const Home = () => {
         <h1 className="my-5 text-h1 text-center">
           Recently <span className="text-primary">Listed Properties</span>
         </h1>
-        <div className="p-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="p-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-12">
           {properties.map((property) => (
             <PropertyCard key={property._id} property={property} />
           ))}

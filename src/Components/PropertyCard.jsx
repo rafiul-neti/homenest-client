@@ -19,8 +19,8 @@ const PropertyCard = ({ property }) => {
             {property["property-name"]}
           </h3>
           <p className="flex gap-5 items-center">
-            <IoLocationOutline />{" "}
-            <span className="text-sm text-body text-gray-500">
+            <IoLocationOutline className="text-secondary" />{" "}
+            <span className="text-sm text-body text-success">
               {property.location}
             </span>{" "}
           </p>
@@ -32,7 +32,7 @@ const PropertyCard = ({ property }) => {
         </div>
         <div className="flex justify-between items-center">
           <div className="">
-            <p className="capitalize text-sm text-gray-500">{property.category}</p>
+            <p className="capitalize text-sm text-primary">{property.category}</p>
             <h3 className="text-h3 text-gray-700">{property.price}</h3>
           </div>
 
