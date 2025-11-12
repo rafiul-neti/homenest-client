@@ -44,7 +44,10 @@ const Footer = () => {
       </footer>
       <div className="bg-base-200 text-center pt-2 pb-4">
         <p className="text-gray-600">
-          Copyright © {new Date().getFullYear()} - All right reserved by HomeNest
+          Copyright © {new Date().getFullYear()} - All right reserved by{" "}
+          <span className="text-primary cursor-pointer font-extrabold">
+            HomeNest
+          </span>{" "}
           Industries Ltd
         </p>
       </div>
