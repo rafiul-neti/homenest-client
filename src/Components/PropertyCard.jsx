@@ -18,6 +18,13 @@ const PropertyCard = ({ property }) => {
           <h3 className="my-5 text-subtitle text-center text-gray-700">
             {property["property-name"]}
           </h3>
+          <p className="my-2 font-bold">
+            Posted by: <span className="text-error font-medium">
+              {
+                property["posted-by"]
+              }
+            </span>
+          </p>
           <p className="flex gap-5 items-center">
             <IoLocationOutline className="text-secondary" />{" "}
             <span className="text-sm text-body text-success">

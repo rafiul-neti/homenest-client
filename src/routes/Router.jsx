@@ -5,6 +5,7 @@ import Register from "../Pages/Register";
 import Home from "../Pages/Home";
 import PropertyDetails from "../Pages/PropertyDetails";
 import PrivateRoute from "./PrivateRoute";
+import AllProperties from "../Pages/AllProperties";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        path: "all-properties",
+        Component: AllProperties,
       },
       {
         path: "/property/:id",

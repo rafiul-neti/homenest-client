@@ -79,10 +79,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* ===============================
-   📝 BODY / PARAGRAPH TEXT
-================================= */
-
 /* Standard paragraph */
 .text-body {
   @apply text-sm sm:text-base lg:text-lg  leading-relaxed;
