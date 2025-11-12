@@ -72,8 +72,8 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link to={`/`} className="btn btn-ghost text-xl">
-            HomeNest
+          <Link to={`/`} className="btn btn-ghost">
+            <h3 className="text-h2">Home<span className="text-primary">Nest.</span></h3>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
