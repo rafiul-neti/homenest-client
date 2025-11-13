@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import useAxios from "../CustomHooks/useAxios";
 import { IoLocation } from "react-icons/io5";
 import toast from "react-hot-toast";
-import { FaUser } from "react-icons/fa";
+import { FaStar, FaUser } from "react-icons/fa";
 
 const PropertyDetails = () => {
   const [singleProperty, setSingleProperty] = useState({});
@@ -87,17 +87,41 @@ const PropertyDetails = () => {
       </section>
 
       <section className="mt-10 container mx-auto">
-        <h3 className="text-h3 font-bold">Ratings for the property</h3>
+        <h3 className="mb-2 text-h3 font-bold text-center">
+          Ratings for the property
+        </h3>
+        <p className="mb-4 text-caption text-gray-600 text-center">
+          Read honest feedback from previous visitors and homeowners to help you
+          make informed decisions about this property.
+        </p>
 
-        <div className="">
+        <div className="p-3 bg-base-300 grid grid-cols-1 gap-3">
           {ratings.map((rating) => {
             return (
-              <div key={rating._id}>
-                <div className="">
-                  <FaUser />
+              <div
+                key={rating._id}
+                className="bg-base-100 p-2 rounded flex items-center gap-3"
+              >
+                <div className="p-4 bg-neutral rounded-full">
+                  <FaUser size={50} />
                 </div>
                 <div className="">
-                  <span>Reviewed by: {rating}</span>
+                  <p className="text-caption text-gray-700">
+                    Reviewed by:{" "}
+                    <span className="text-body font-bold">
+                      {rating.reviewer_name}
+                    </span>
+                  </p>
+                  <p className="font-bold text-base lg:text-lg text-gray-600 flex items-center gap-1">
+                    <span>Rated ({rating.star} out of 5): </span>
+                    {[...Array(rating.star)].map((str, ind) => (
+                      <FaStar key={ind} color="#ff4b2b" />
+                    ))}
+                  </p>
+                  <p className="font-bold">
+                    Review:{" "}
+                    <span className="text-success">{rating.review}</span>
+                  </p>
                 </div>
               </div>
             );
