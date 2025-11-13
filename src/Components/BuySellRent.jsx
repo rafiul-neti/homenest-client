@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const BuySellRent = () => {
   return (
-    <div className="flex gap-5">
+    <div className="flex flex-col lg:flex-row gap-5">
       <div className="bsr-cards">
         <div className="bsr-images">
           <img
