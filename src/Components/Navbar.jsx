@@ -26,7 +26,7 @@ const Navbar = () => {
         <NavLink to={`/my-properties`}>My Properties</NavLink>
       </li>
       <li>
-        <NavLink>My Ratings</NavLink>
+        <NavLink to={`/my-ratings`}>My Ratings</NavLink>
       </li>
     </>
   );

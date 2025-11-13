@@ -13,14 +13,24 @@ const AllProperties = () => {
     setLoading(true);
     setTimeout(() => {
       axiosInstance
-        .get(`/all-properties?sort=${sort}`)
+        .get(`/all-properties`)
         .then((data) => {
           setProperties(data.data);
         })
         .catch((err) => console.log(err))
         .finally(() => setLoading(false));
     }, 700);
-  }, [axiosInstance, reload, sort]);
+  }, [axiosInstance, reload]);
+
+  useEffect(() => {
+    if (!sort) return;
+    axiosInstance
+      .get(`/all-properties?sort=${sort}`)
+      .then((data) => {
+        setProperties(data.data);
+      })
+      .catch((err) => console.log(err));
+  }, [axiosInstance, sort]);
 
   if (loading)
     return (

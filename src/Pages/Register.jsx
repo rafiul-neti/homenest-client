@@ -49,7 +49,7 @@ const Register = () => {
           photoURL: image,
         })
           .then()
-          .catch((err) => console.log(err.message));
+          .catch((err) => toast.error(err.message));
 
         const userInfo = {
           name,
