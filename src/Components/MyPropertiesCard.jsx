@@ -1,12 +1,10 @@
-import React, { use, useRef, useState } from "react";
+import React, { use, useRef } from "react";
 import { FaCalendar } from "react-icons/fa";
 import { Link } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
 
 const MyPropertiesCard = ({ property }) => {
   const { user } = use(AuthContext);
-  const [category, setCategory] = useState(null);
-  const [error, setError] = useState("");
   const updateRef = useRef(null);
   const deleteRef = useRef();
 
@@ -128,16 +126,12 @@ const MyPropertiesCard = ({ property }) => {
                     Category
                   </label>
 
-                  <select
-                    onChange={(e) => setCategory(e.target.value)}
-                    name=""
+                  <input
+                    type="text"
+                    name="category"
                     className="input w-full outline-0"
-                  >
-                    <option>Select The Category</option>
-                    <option>for sale</option>
-                    <option>for rental</option>
-                  </select>
-                  <p className="text-caption text-error">{error && error}</p>
+                    defaultValue={property.category}
+                  />
                 </div>
               </div>
 
@@ -148,8 +142,7 @@ const MyPropertiesCard = ({ property }) => {
                 name="aboutProperty"
                 rows={`3`}
                 className="input outline-0 w-full h-16 whitespace-pre-line"
-                placeholder="Write something catchy about your property within 2 lines."
-                required
+                defaultValue={property["about-property"]}
               ></textarea>
 
               <label className="labels text-subtitle" htmlFor="">
@@ -159,8 +152,7 @@ const MyPropertiesCard = ({ property }) => {
                 name="description"
                 rows={`5`}
                 className="input outline-0 w-full h-32 whitespace-pre-line"
-                placeholder="Describe your property features, nearby landmarks, and other highlights."
-                required
+                defaultValue={property.description}
               ></textarea>
 
               <div className="modal-divs">
@@ -173,8 +165,7 @@ const MyPropertiesCard = ({ property }) => {
                     type="text"
                     name="price"
                     className="input outline-0 w-full"
-                    placeholder="e.g. 2500000 or 15000/month"
-                    required
+                    defaultValue={property.price}
                   />
                 </div>
 
@@ -187,8 +178,7 @@ const MyPropertiesCard = ({ property }) => {
                     type="text"
                     name="location"
                     className="input outline-0 w-full"
-                    placeholder="e.g. Dhanmondi, Dhaka"
-                    required
+                    defaultValue={property.location}
                   />
                 </div>
               </div>
@@ -203,8 +193,7 @@ const MyPropertiesCard = ({ property }) => {
                     type="text"
                     name="thumbnail"
                     className="input outline-0 w-full"
-                    placeholder="Paste image URL (https://example.com/image.jpg)"
-                    required
+                    defaultValue={property.thumbnail}
                   />
                 </div>
 
@@ -217,8 +206,7 @@ const MyPropertiesCard = ({ property }) => {
                     type="text"
                     name="image"
                     className="input outline-0 w-full"
-                    placeholder="Paste image URL (https://example.com/image.jpg)"
-                    required
+                    defaultValue={property["property-image"]}
                   />
                 </div>
               </div>
