@@ -34,7 +34,7 @@ const BuySellRent = () => {
             Get the best value for your property with our smart marketing and
             professional support.
           </p>
-          <Link className="bsr-btns">Place an Ad</Link>
+          <Link to={`/add-property`} className="bsr-btns">Place an Ad</Link>
         </div>
       </div>
 

@@ -81,7 +81,7 @@
 
 /* Standard paragraph */
 .text-body {
-  @apply text-sm sm:text-base lg:text-lg  leading-relaxed;
+  @apply text-sm sm:text-base lg:text-lg leading-relaxed;
   font-family: "Nunito", sans-serif;
 }
 
@@ -145,4 +145,12 @@
 
 .hero-bg-4 {
   background-image: url("https://images.unsplash.com/photo-1757361652977-218a1173e8d6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870");
+}
+
+.add-divs {
+  @apply flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3;
+}
+
+.labels {
+  @apply block mb-2 font-bold! text-success;
 }

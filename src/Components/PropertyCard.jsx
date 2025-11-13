@@ -3,6 +3,8 @@ import { IoLocationOutline } from "react-icons/io5";
 import { Link } from "react-router";
 
 const PropertyCard = ({ property }) => {
+
+  console.log(property)
   
   return (
     <div className="bg-base-100 shadow-lg rounded-md">
