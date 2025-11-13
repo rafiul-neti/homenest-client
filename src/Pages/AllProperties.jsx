@@ -9,9 +9,12 @@ const AllProperties = () => {
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
-      axiosInstance.get("/all-properties").then((data) => {
-        setProperties(data.data);
-      });
+      axiosInstance
+        .get("/all-properties")
+        .then((data) => {
+          setProperties(data.data);
+        })
+        .catch((err) => console.log(err));
       setLoading(false);
     }, 700);
   }, [axiosInstance]);

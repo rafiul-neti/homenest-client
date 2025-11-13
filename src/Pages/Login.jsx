@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
 import useAxios from "../CustomHooks/useAxios";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const location = useLocation();
@@ -60,7 +61,7 @@ const Login = () => {
         setLoading(false);
         navigate(location.state || "/");
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
 
   return (

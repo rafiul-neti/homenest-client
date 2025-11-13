@@ -3,6 +3,7 @@ import { AuthContext } from "../Contexts/AuthContext";
 import useAxios from "../CustomHooks/useAxios";
 import { format } from "date-fns";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const AddProperty = () => {
   const [category, setCategory] = useState(null);
@@ -58,12 +59,12 @@ const AddProperty = () => {
             icon: "success",
             timer: 2000,
           });
+
+          e.target.reset();
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(error.message));
   };
-
-  console.log(category);
 
   return (
     <section className="mt-5 rounded bg-base-300 container mx-auto p-2 lg:p-0 min-h-screen">

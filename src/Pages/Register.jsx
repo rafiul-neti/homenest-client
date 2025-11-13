@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
 import useAxios from "../CustomHooks/useAxios";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -70,7 +71,7 @@ const Register = () => {
         e.target.reset();
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 
@@ -99,7 +100,7 @@ const Register = () => {
 
         setLoading(false);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
   return (
     <section className="bg-neutral min-h-screen flex flex-col items-center justify-center">

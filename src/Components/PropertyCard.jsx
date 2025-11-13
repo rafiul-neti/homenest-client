@@ -46,7 +46,7 @@ const PropertyCard = ({ property }) => {
           </div>
 
           <div className="">
-            <Link to={`/property/${property._id}`} className="btn btn-outline text-gray-500 outline-gray-400 hover:bg-secondary hover:text-base-100 ease-in-out duration-500">
+            <Link to={`/property/${property._id}`} className="btn btn-outline border-2 border-primary text-primary text-lg outline-gray-400 hover:bg-secondary hover:text-base-100 ease-in-out duration-500">
               View Property
             </Link>
           </div>

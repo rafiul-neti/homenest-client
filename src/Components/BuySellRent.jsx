@@ -17,7 +17,9 @@ const BuySellRent = () => {
             Find your dream home with trusted listings and expert guidance every
             step of the way.
           </p>
-          <Link className="bsr-btns">Find a Home</Link>
+          <Link to={`/all-properties`} className="bsr-btns">
+            Find a Home
+          </Link>
         </div>
       </div>
 
@@ -34,7 +36,9 @@ const BuySellRent = () => {
             Get the best value for your property with our smart marketing and
             professional support.
           </p>
-          <Link to={`/add-property`} className="bsr-btns">Place an Ad</Link>
+          <Link to={`/add-property`} className="bsr-btns">
+            Place an Ad
+          </Link>
         </div>
       </div>
 
@@ -51,7 +55,9 @@ const BuySellRent = () => {
             Discover affordable rental options that match your lifestyle and
             location preferences easily.
           </p>
-          <Link className="bsr-btns">Find a Rental</Link>
+          <Link to={`/all-properties`} className="bsr-btns">
+            Find a Rental
+          </Link>
         </div>
       </div>
     </div>

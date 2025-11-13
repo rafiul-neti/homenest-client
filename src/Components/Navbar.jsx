@@ -23,7 +23,7 @@ const Navbar = () => {
         <NavLink to={`/add-property`}>Add Properties</NavLink>
       </li>
       <li>
-        <NavLink>My Properties</NavLink>
+        <NavLink to={`/my-properties`}>My Properties</NavLink>
       </li>
       <li>
         <NavLink>My Ratings</NavLink>

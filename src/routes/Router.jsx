@@ -7,6 +7,7 @@ import PropertyDetails from "../Pages/PropertyDetails";
 import PrivateRoute from "./PrivateRoute";
 import AllProperties from "../Pages/AllProperties";
 import AddProperty from "../Pages/AddProperty";
+import MyProperties from "../Pages/MyProperties";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <PropertyDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-properties",
+        element: (
+          <PrivateRoute>
+            <MyProperties />
           </PrivateRoute>
         ),
       },
