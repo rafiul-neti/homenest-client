@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../Contexts/AuthContext";
 import useAxios from "../CustomHooks/useAxios";
 import MyPropertiesCard from "../Components/MyPropertiesCard";
+import Swal from "sweetalert2";
 
 const MyProperties = () => {
   const { user } = use(AuthContext);
@@ -29,6 +30,36 @@ const MyProperties = () => {
       </div>
     );
 
+  const removeAfterDeleting = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosInstance.delete(`/my-properties/${id}`).then((data) => {
+          if (data.data.deletedCount) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your property has been deleted.",
+              icon: "success",
+            });
+
+            const remainingProperties = myProperties.filter(
+              (property) => id !== property._id
+            );
+
+            setMyProperties(remainingProperties);
+          }
+        });
+      }
+    });
+  };
+
   return (
     <section className="container mx-auto min-h-screen">
       <h1 className="mt-5 text-h1 text-center">
@@ -39,9 +70,13 @@ const MyProperties = () => {
         portfolio up to date and attract the right buyers or renters.
       </p>
 
-      <div className="bg-base-300 p-4">
+      <div className="bg-base-300 p-4 grid grid-cols-1 gap-5">
         {myProperties.map((property) => (
-          <MyPropertiesCard key={property._id} property={property} />
+          <MyPropertiesCard
+            key={property._id}
+            property={property}
+            removeAfterDeleting={removeAfterDeleting}
+          />
         ))}
       </div>
     </section>

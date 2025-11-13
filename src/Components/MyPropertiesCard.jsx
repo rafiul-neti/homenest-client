@@ -1,19 +1,72 @@
-import React, { use, useRef } from "react";
+import React, { use, useRef, useState } from "react";
 import { FaCalendar } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
+import useAxios from "../CustomHooks/useAxios";
+import Swal from "sweetalert2";
 
-const MyPropertiesCard = ({ property }) => {
+const MyPropertiesCard = ({ property, removeAfterDeleting }) => {
+  const axiosInstance = useAxios();
+  const [error, setError] = useState("");
   const { user } = use(AuthContext);
   const updateRef = useRef(null);
-  const deleteRef = useRef();
+  const navigate = useNavigate()
 
   const handleUpdateProperty = () => {
     updateRef.current.showModal();
   };
 
-  const handleDeleteProperty = () => {
-    deleteRef.current.showModal();
+  const handleDeleteProperty = (id) => {
+    removeAfterDeleting(id);
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+
+    const postedBy = e.target.name.value;
+    const posterEmail = e.target.email.value;
+    const propertyName = e.target.propertyName.value;
+    const category = e.target.category.value;
+    const aboutProperty = e.target.aboutProperty.value;
+    const description = e.target.description.value;
+    const price = e.target.price.value;
+    const location = e.target.location.value;
+    const thumbnail = e.target.thumbnail.value;
+    const propertyImage = e.target.image.value;
+
+    if (category !== "for sale" || category !== "for rental") {
+      setError("Please Enter the categoty 'for sale' or 'for rental'.");
+    }
+
+    const newProperty = {
+      "property-name": propertyName,
+      description,
+      "about-property": aboutProperty,
+      price,
+      location,
+      category,
+      thumbnail,
+      "property-image": propertyImage,
+      "posted-by": postedBy,
+      "poster-email": posterEmail,
+    };
+
+    axiosInstance
+      .patch(`/update-property/${property._id}`, newProperty)
+      .then((data) => {
+        if (data.data.matchedCount) {
+          Swal.fire({
+            title: "Updated!",
+            text: "Your property has been updated.",
+            icon: "success",
+          });
+
+          updateRef.current.close();
+
+          navigate(`/property/${property._id}`)
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -47,7 +100,7 @@ const MyPropertiesCard = ({ property }) => {
               Edit
             </button>
             <button
-              onClick={handleDeleteProperty}
+              onClick={() => handleDeleteProperty(property._id)}
               className="btn btn-error text-base-100 flex-1 md:flex-none md:w-32"
             >
               Delete
@@ -64,13 +117,10 @@ const MyPropertiesCard = ({ property }) => {
 
       {/* Modals */}
 
-      <dialog
-        ref={updateRef}
-        className="modal modal-bottom sm:modal-middle lg:8/12"
-      >
+      <dialog ref={updateRef} className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <div className="mt-5">
-            <form onSubmit={``} className="p-3 space-y-5">
+            <form onSubmit={handleUpdate} className="p-3 space-y-5">
               <h3 className="text-h2 font-bold! text-center">
                 Update Your{" "}
                 <span className="text-secondary">Property Info</span>
@@ -122,8 +172,11 @@ const MyPropertiesCard = ({ property }) => {
                 </div>
 
                 <div className="lg:flex-1 w-full">
-                  <label className="labels text-subtitle" htmlFor="">
-                    Category
+                  <label
+                    className={`labels text-subtitle ${error && "text-error"}`}
+                    htmlFor=""
+                  >
+                    {error ? error : "Category"}
                   </label>
 
                   <input
@@ -218,19 +271,10 @@ const MyPropertiesCard = ({ property }) => {
               </div>
             </form>
           </div>
-        </div>
-      </dialog>
-
-      <dialog ref={deleteRef} className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">
-            Press ESC key or click the button below to close
-          </p>
-          <div className="modal-action">
+          <div className="modal-action mt-0 justify-center-safe">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
-              <button className="btn">Close</button>
+              <button className="btn btn-error text-base-100">Close</button>
             </form>
           </div>
         </div>
