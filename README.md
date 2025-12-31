@@ -1,16 +1,41 @@
-# React + Vite
+# HomeNest
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](https://assignment-10-54df3.web.app/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![React](https://img.shields.io/badge/React-17.0.2-blue?logo=react&logoColor=white)](https://reactjs.org/)
+[![Firebase](https://img.shields.io/badge/Firebase-9.22.1-orange?logo=firebase&logoColor=white)](https://firebase.google.com/)
 
-Currently, two official plugins are available:
+A modern, responsive web application for managing home-related tasks and services. HomeNest allows users to explore services, manage tasks, and interact with a clean, user-friendly interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Project Screenshot](path-to-your-screenshot.png)  
+*Replace `path-to-your-screenshot.png` with the relative path of your screenshot in the repo.*
 
-## React Compiler
+## Technologies Used
+- **Frontend:** React.js  
+- **Routing:** React Router  
+- **State Management:** React Context / Redux (if applicable)  
+- **Deployment:** Firebase Hosting  
+- **Styling:** CSS / Tailwind CSS (if applicable)  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Core Features
+- Browse and search home services easily  
+- User authentication and profile management  
+- Interactive UI for managing tasks and services  
+- Responsive design for desktop and mobile  
+- Real-time updates (if applicable)  
 
-## Expanding the ESLint configuration
+## Dependencies
+- `react`  
+- `react-dom`  
+- `react-router-dom`  
+- `firebase`  
+- `axios` (if used)  
+- Any other dependencies your project uses  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+Follow these steps to run the project locally:
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/rafiul-neti/homenest-client.git
