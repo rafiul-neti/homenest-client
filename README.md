@@ -29,7 +29,6 @@ A modern, responsive web application for managing home-related tasks and service
 - `react-router-dom`  
 - `firebase`  
 - `axios`
-- Any other dependencies your project uses  
 
 ## Getting Started
 
