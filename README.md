@@ -5,6 +5,8 @@
 [![React](https://img.shields.io/badge/React-17.0.2-blue?logo=react&logoColor=white)](https://reactjs.org/)
 [![Firebase](https://img.shields.io/badge/Firebase-9.22.1-orange?logo=firebase&logoColor=white)](https://firebase.google.com/)
 
+**Live Website:** [https://bookcourier-ace9a.web.app/](https://assignment-10-54df3.web.app/)
+
 A modern, responsive web application for managing home-related tasks and services. HomeNest allows users to explore services, manage tasks, and interact with a clean, user-friendly interface.
 
 ## Technologies Used
